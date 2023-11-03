@@ -4,11 +4,11 @@ This package implements generic extensions to the `.draggable()` and `.dropDesti
 
 Since SwiftData `PersistentModel` objects are not `Codable` and they are not `Transferable`, instead of trying to drag and drop the `PersistentModel` objects themselves, this package extracts and drags the `PersistentIdentifier` struct from the corresponding `PersistentModel` object.  This works well for dragging because the `PersistentIdentifier` struct is already `Codable` and it can easily be made  `Transferable`.  The `PersistentIdentifier` struct also works well for dropping because it can be used to retrieve its corresponding `PersistentModel` object from the `ModelContext`.
 
-A complete project that demonstrates how to use this package is available at: [https://github.com/Whiffer/SampleSwiftDataTransferrable](url)
+A complete project that demonstrates how to use this package is available at: [https://github.com/Whiffer/SampleSwiftDataTransferrable](https://github.com/Whiffer/SampleSwiftDataTransferrable)
 ## Steps to Implement SwiftUI Drag and Drop with SwiftData objects
 
 #### Add a Package Dependency for this package to your project
-The Package URL is: [https://github.com/Whiffer/swiftdata-transferrable](url)
+The Package URL is: [https://github.com/Whiffer/swiftdata-transferrable](https://github.com/Whiffer/swiftdata-transferrable)
 #### Create an appropriate **Exported Type Identifier** for your project
 Open your project settings, select the **Info** tab for your **Target**, then add a new **Exported Type Identifier** with the following properties:
 ```
