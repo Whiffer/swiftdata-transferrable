@@ -20,6 +20,12 @@ extension View {
         return self.draggable(payload().persistentModelID)
     }
     
+    public func draggable<V, Model>(_ payload: @autoclosure @escaping () -> Model, @ViewBuilder preview: () -> V) -> some View where V : View, Model : PersistentModel {
+        return self.draggable(payload().persistentModelID) {
+            preview()
+        }
+    }
+
     public func dropDestination<Model>(for payloadType: Model.Type = Model.self,
                                        action: @escaping ([Model], CGPoint) -> Bool,
                                        isTargeted: @escaping (Bool) -> Void = { _ in },
