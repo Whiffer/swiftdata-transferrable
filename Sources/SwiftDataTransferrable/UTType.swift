@@ -11,7 +11,7 @@ import SwiftData
 import UniformTypeIdentifiers
 
 extension UTType {
-    static var persistentModelID: UTType { UTType(exportedAs: SwiftDataDragAndDropController.shared.exportedUTType) }
+    public static var persistentModelID: UTType { UTType(exportedAs: SwiftDataDragAndDropController.shared.exportedUTType) }
 }
 
 extension PersistentIdentifier: Transferable {
