@@ -10,7 +10,7 @@ import SwiftData
 
 extension NSItemProvider {
     
-    @MainActor internal func persistentModelID() async -> PersistentIdentifier? {
+    @MainActor public func persistentModelID() async -> PersistentIdentifier? {
         
         typealias PersistentModelIDContinuation = CheckedContinuation<PersistentIdentifier?, Never>
         
