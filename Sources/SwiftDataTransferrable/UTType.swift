@@ -21,7 +21,7 @@ extension PersistentIdentifier: Transferable {
 }
 
 extension PersistentIdentifier {
-    func persistentModel<Model>(from context: ModelContext) -> Model? where Model : PersistentModel {
+    public func persistentModel<Model>(from context: ModelContext) -> Model? where Model : PersistentModel {
         return context.model(for: self) as? Model
     }
 }
