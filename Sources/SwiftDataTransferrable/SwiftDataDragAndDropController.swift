@@ -21,4 +21,26 @@ internal class SwiftDataDragAndDropController {
     var isValidationPending = true
     var isDragActive = false
     var dropProposal: DropProposal?
+    
+    // Dragging onInsert
+    var onInsertAction: OnInsertAction?
+    var onInsertTo: Int = 0
+    var onInsertItemProviders: [NSItemProvider]?
+
+    func onInsertItems() async -> Void {
+        if let itemProviders = onInsertItemProviders,
+           let action = onInsertAction {
+            
+            // Map [NSItemProvider] to [PersistentIdentifier]
+            var persistentModelIDs = Array<PersistentIdentifier>()
+            for itemProvider in itemProviders {
+                if let persistentModelID = await itemProvider.persistentModelID() {
+                    persistentModelIDs.append(persistentModelID)
+                }
+            }
+            
+            action(onInsertTo, persistentModelIDs)
+        }
+    }
+    
 }
