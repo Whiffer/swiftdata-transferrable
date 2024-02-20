@@ -32,9 +32,8 @@ The syntax of this package's generic `PersistentModel` `.draggable()` View modif
         .draggable(item)
 ```
 #### Add `.dropDestination()` View modifiers
-The default syntax for this package's generic `PersistentModel` `dropDestination()` View modifier is basically the same as SwiftUI's generic `Transferrable` `.dropDestination()` View modifier.  The `PersistentModel` items being dropped are the same `PersistentModel` objects that were dragged by the `.draggable()` View modifier.
+The syntax for this package's generic `PersistentModel` `dropDestination()` View modifier is the same as SwiftUI's generic `Transferrable` `.dropDestination()` View modifier.  The `PersistentModel` items being dropped are the same `PersistentModel` objects that were dragged by the `.draggable()` View modifier.
 
-In addition to the standard `for:`, `action:`, and `isTargeted:` paramenters, there is a new `dropProposal:` parameter to pass an optional closure that allows saving of a `DropProposal` struct during the drag and before the drop.  It is also used to inform the `DropDelegate` of the currently proposed `DropOperation` (e.g. `.copy`, `.move` and `.forbidden`).  There are examples of how to use this feature in the sample program linked above. 
 ```swift
         Text("Drop Target")
         .dropDestination(for: Item.self) { items, _ in
@@ -45,4 +44,7 @@ In addition to the standard `for:`, `action:`, and `isTargeted:` paramenters, th
         }
 ```
 
+The `dropPropsal` parameter is no longer available in Version 2.0 of this package.
+
+~~In addition to the standard `for:`, `action:`, and `isTargeted:` paramenters, there is a new `dropProposal:` parameter to pass an optional closure that allows saving of a `DropProposal` struct during the drag and before the drop.  It is also used to inform the `DropDelegate` of the currently proposed `DropOperation` (e.g. `.copy`, `.move` and `.forbidden`).  There are examples of how to use this feature in the sample program linked above.~~
 

@@ -8,26 +8,20 @@
 import SwiftUI
 import SwiftData
 
-public typealias OnInsertAction = (Int, [PersistentIdentifier]) -> Void
-
 extension DynamicViewContent {
     
-    public func onInsert<Model>(for payloadType: Model.Type = Model.self, perform action: @escaping (OnInsertAction) ) -> some DynamicViewContent where Model : PersistentModel {
+    public func dropDestination<Model>(for payloadType: Model.Type = Model.self, action: @escaping ([Model], Int) -> Void) -> some DynamicViewContent where Model : PersistentModel {
         
-        return onInsert(of: [.persistentModelID]) { to, itemProviders in
+        return self.dropDestination(for: PersistentIdentifier.self) { ids, offset in
             
-            let controller = SwiftDataDragAndDropController.shared
-            controller.onInsertAction = action
-            controller.onInsertTo = to
-            controller.onInsertItemProviders = itemProviders
-
-            Task {
-                await controller.onInsertItems()
-                
-                controller.onInsertItemProviders = nil
-                controller.onInsertTo = 0
-                controller.onInsertAction = nil
+            let modelContext = SwiftDataDragAndDropController.shared.modelContext!
+            var modelObjects = Array<Model>()
+            for id in ids {
+                if let modelObject: Model = id.persistentModel(from: modelContext) {
+                    modelObjects.append(modelObject)
+                }
             }
+            return action(modelObjects, offset)
         }
     }
     
