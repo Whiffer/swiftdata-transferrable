@@ -16,13 +16,13 @@ Description:    "SwiftData Persistent Model ID"
 Identifier:     "com.YourTeam.persistentModelID"
 Conforms To:    "public.data"
 ```
-#### Add the `.swiftDataTransferrable()` View modifer
-Add a `.swiftDataTransferrable()` View modifer with appropriate argument values to the `ContentView` in your App struct:
+#### Add the `SwiftDataTransferrableScene` Scene
+Add a `SwiftDataTransferrableScene` SceneBuilder with appropriate argument values to your App struct.  Include all Scene's that have View's that you wish to use with this package.
 ```swift
-        WindowGroup {
-            ContentView()
-                .swiftDataTransferrable(exportedUTType: "com.YourTeam.persistentModelID",
-                                        modelContext: sharedModelContainer.mainContext)
+        SwiftDataTransferrableScene(schema: schema, exportedUTType: "com.YourTeam.persistentModelID") {
+            WindowGroup {
+                ContentView()
+            }
         }
 ```
 #### Add `.draggable()` View modifiers
@@ -43,6 +43,10 @@ The syntax for this package's generic `PersistentModel` `dropDestination()` View
             return true
         }
 ```
+
+#### Change History
+
+The `.swiftDataTransferrable()` View modifier is no longer available in Version 3.0 of this package.  Instead, use `SwiftDataTransferrableScene()` as described above by providing it with your `WindowGroup(s)`. The `SwiftDataTransferrableScene()` includes all of the necessary SwiftData model container setup that was formerly required to be provided in your App struct.
 
 The `dropPropsal` parameter is no longer available in Version 2.0 of this package.
 

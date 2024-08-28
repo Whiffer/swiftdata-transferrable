@@ -10,13 +10,6 @@ import SwiftData
 
 extension View {
     
-    public func swiftDataTransferrable(exportedUTType: String, modelContext: ModelContext) -> some View {
-        
-        SwiftDataDragAndDropController.shared.exportedUTType = exportedUTType
-        SwiftDataDragAndDropController.shared.modelContext = modelContext
-        return self
-    }
-    
     public func draggable<Model>(_ payload: @autoclosure @escaping () -> Model) -> some View where Model : PersistentModel {
         
         return self.draggable(payload().persistentModelID)
