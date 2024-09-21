@@ -16,7 +16,7 @@ extension UTType {
 
 extension PersistentIdentifier: Transferable {
     public static var transferRepresentation: some TransferRepresentation {
-        CodableRepresentation(contentType: .persistentModelID)
+        CodableRepresentation(for: PersistentIdentifier.self, contentType: .persistentModelID)
     }
 }
 
