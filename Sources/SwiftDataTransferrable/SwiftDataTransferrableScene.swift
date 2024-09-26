@@ -24,7 +24,7 @@ import SwiftData
         SwiftDataDragAndDropController.shared.modelContext = modelContext
     }
     
-    init(schema: Schema, exportedUTType: String, @SceneBuilder content: () -> Content) {
+    public init(schema: Schema, exportedUTType: String, @SceneBuilder content: () -> Content) {
         self.content = content()
         
         do {
