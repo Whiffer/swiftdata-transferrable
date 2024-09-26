@@ -14,9 +14,9 @@ extension UTType {
     public static var persistentModelID: UTType { UTType(exportedAs: SwiftDataDragAndDropController.shared.exportedUTType) }
 }
 
-extension PersistentIdentifier: Transferable {
+extension PersistentIdentifier: @retroactive Transferable {
     public static var transferRepresentation: some TransferRepresentation {
-        CodableRepresentation(contentType: .persistentModelID)
+        CodableRepresentation(for: PersistentIdentifier.self, contentType: .persistentModelID)
     }
 }
 
